@@ -1,108 +1,83 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Site de Junior</title>
+  <meta charset="UTF-8">
+  <title>Site de Junior 😎</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('IMG_1864.jpeg'); /* vérifie que le nom du fichier est EXACTEMENT le même */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-image: url('IMG_1864.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin: 0;
-            padding-top: 20px;
-            color: white;
-        }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 2px; /* rapproché */
+      text-shadow: 2px 2px 4px black;
+    }
 
-        h1 {
-            color: #fff;
-            margin-bottom: 5px;
-            font-size: 22px;
-        }
+    p {
+      font-size: 13px;
+      margin-top: 0;
+      margin-bottom: 8px; /* rapproché */
+      text-shadow: 1px 1px 3px black;
+    }
 
-        p {
-            font-size: 16px;
-            margin-top: 3px;
-            margin-bottom: 10px;
-        }
+    .form-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 8px;
+      border-radius: 10px;
+      width: 230px;
+      margin: 5px auto;
+    }
 
-        button {
-            background-color: #007bff;
-            color: white;
-            font-size: 15px;
-            padding: 7px 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-bottom: 10px;
-        }
+    input {
+      display: block;
+      width: 90%;
+      margin: 3px auto;
+      padding: 4px;
+      border: none;
+      border-radius: 5px;
+    }
 
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
+    button {
+      margin: 3px;
+      padding: 5px 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+    }
 
-        form {
-            background-color: rgba(0, 0, 0, 0.6);
-            display: inline-block;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.3);
-            margin-top: 10px;
-        }
+    .blue { background-color: #007BFF; }
+    .green { background-color: #28a745; }
 
-        input {
-            display: block;
-            width: 220px;
-            padding: 7px;
-            margin: 5px auto;
-            border: none;
-            border-radius: 5px;
-        }
-
-        h3 {
-            margin-bottom: 5px;
-        }
-
-        .submit-btn {
-            background-color: #28a745;
-        }
-
-        .submit-btn:hover {
-            background-color: #1e7e34;
-        }
-    </style>
+    .blue:hover { background-color: #0056b3; }
+    .green:hover { background-color: #1e7e34; }
+  </style>
 </head>
 <body>
-    <h1>Bienvenue sur le site de Junior 😎</h1>
-    <p>Clique sur le bouton pour visiter mon site :</p>
+  <h1>Bienvenue sur le site de Junior 😎</h1>
+  <p>Clique sur le bouton pour visiter mon site</p>
 
-    <a href="https://heylink.me/beendojr/" target="_blank">
-        <button>Aller sur mon site 🌍</button>
-    </a>
-
-    <form onsubmit="return envoyerInfos()">
-        <h3>Entre tes infos 👇</h3>
-        <input type="text" id="nom" placeholder="Ton nom" required>
-        <input type="number" id="age" placeholder="Ton âge" required>
-        <input type="email" id="email" placeholder="Ton e-mail" required>
-        <button type="submit" class="submit-btn">Envoyer ✉️</button>
-    </form>
-
-    <script>
-        function envoyerInfos() {
-            const nom = document.getElementById('nom').value;
-            const age = document.getElementById('age').value;
-            const email = document.getElementById('email').value;
-
-            alert(`Merci ${nom} (${age} ans) ! Ton e-mail (${email}) a bien été enregistré 🎉`);
-            window.location.href = "https://heylink.me/beendojr/";
-            return false;
-        }
-    </script>
+  <div class="form-container">
+    <p><strong>Entre tes infos 👇</strong></p>
+    <input type="text" placeholder="Ton nom">
+    <input type="text" placeholder="Ton âge">
+    <input type="email" placeholder="Ton e-mail">
+    <button class="blue">Aller sur mon site 🌍</button>
+    <button class="green">Envoyer 📩</button>
+  </div>
 </body>
 </html>
