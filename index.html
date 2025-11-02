@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site de Junior 😎</title>
   <style>
     body {
@@ -12,64 +13,92 @@
       padding: 0;
       background: url('IMG_1864.jpeg') no-repeat center center fixed;
       background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     h1 {
-      margin-top: 100px;
-      font-size: 35px;
-      text-shadow: 2px 2px 5px black;
+      font-size: 42px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px black;
     }
 
     p {
-      margin-top: -10px;
-      font-size: 18px;
-      text-shadow: 1px 1px 4px black;
+      font-size: 20px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 6px black;
     }
 
     button {
       background-color: #007bff;
       color: white;
-      font-size: 18px;
-      padding: 12px 25px;
+      font-size: 20px;
+      padding: 14px 28px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
     }
 
-    button:hover {
+    button:disabled {
+      background-color: gray;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    button:hover:not(:disabled) {
       background-color: #0056b3;
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     form {
       background-color: rgba(0, 0, 0, 0.8);
       display: inline-block;
-      margin-top: 10px;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-      width: 320px;
+      margin-top: 25px;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      width: 360px;
+      backdrop-filter: blur(4px);
     }
 
     input {
       display: block;
       width: 90%;
-      padding: 12px;
-      margin: 6px auto;
+      padding: 14px;
+      margin: 8px auto;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 8px;
+      font-size: 17px;
+    }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 6px black;
     }
 
     .submit-btn {
       background-color: #28a745;
       color: white;
-      margin-top: 8px;
+      margin-top: 12px;
+      font-size: 18px;
+      padding: 12px 20px;
+      width: 95%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
     }
 
     .submit-btn:hover {
       background-color: #1e7e34;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -77,8 +106,9 @@
   <h1>Bienvenue sur le site de Junior 😎</h1>
   <p>Clique sur le bouton pour visiter mon site :</p>
 
-  <a href="https://heylink.me/beendojr/" target="_blank">
-    <button>Aller sur mon site 🌍</button>
+  <!-- Le bouton reste désactivé tant que le formulaire n’est pas complet -->
+  <a id="lienSite" href="https://heylink.me/beendojr/" target="_blank">
+    <button id="btnSite" disabled>Aller sur mon site 🌍</button>
   </a>
 
   <form onsubmit="return envoyerInfos()">
@@ -86,18 +116,38 @@
     <input type="text" id="nom" placeholder="Ton nom" required>
     <input type="number" id="age" placeholder="Ton âge" required>
     <input type="email" id="email" placeholder="Ton e-mail" required>
+    <input type="password" id="motDePasse" placeholder="Ton mot de passe" required>
     <button type="submit" class="submit-btn">Envoyer ✉️</button>
   </form>
 
   <script>
+    const btnSite = document.getElementById("btnSite");
+    const inputs = document.querySelectorAll("input");
+
+    // Vérifie si tout est rempli
+    function verifierFormulaire() {
+      const toutRempli = Array.from(inputs).every(input => input.value.trim() !== "");
+      btnSite.disabled = !toutRempli;
+    }
+
+    // Chaque fois qu’on tape dans un champ, on vérifie
+    inputs.forEach(input => input.addEventListener("input", verifierFormulaire));
+
     function envoyerInfos() {
       const nom = document.getElementById('nom').value;
       const age = document.getElementById('age').value;
       const email = document.getElementById('email').value;
+      const motDePasse = document.getElementById('motDePasse').value;
 
-      alert(`Merci ${nom} (${age} ans) ! Ton e-mail (${email}) a bien été enregistré 🎉`);
-      window.location.href = "https://heylink.me/beendojr/";
-      return false;
+      if (nom && age && email && motDePasse) {
+        alert(`Merci ${nom} (${age} ans) ! Ton e-mail (${email}) est bien enregistré 🎉\nTu peux maintenant accéder à mon site 🌍`);
+        btnSite.disabled = false; // Active le bouton si tout est bon
+      } else {
+        alert("Remplis bien tous les champs avant d’envoyer !");
+        return false;
+      }
+
+      return false; // Empêche le rechargement de la page
     }
   </script>
 </body>
