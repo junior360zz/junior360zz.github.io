@@ -12,29 +12,32 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            margin: 0;
+            padding-top: 40px;
             color: white;
-            margin-top: 100px;
         }
 
         h1 {
             color: #fff;
-            text-shadow: 2px 2px 5px black;
+            margin-bottom: 10px;
         }
 
         p {
             font-size: 18px;
-            text-shadow: 1px 1px 4px black;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         button {
             background-color: #007bff;
             color: white;
             font-size: 16px;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
+            margin-bottom: 15px;
         }
 
         button:hover {
@@ -43,20 +46,19 @@
         }
 
         form {
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(0, 0, 0, 0.6);
             display: inline-block;
-            margin-top: 30px;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
 
         input {
             display: block;
-            width: 250px;
-            padding: 10px;
-            margin: 10px auto;
-            border: 1px solid #ccc;
+            width: 240px;
+            padding: 8px;
+            margin: 6px auto;
+            border: none;
             border-radius: 5px;
         }
 
@@ -78,7 +80,7 @@
     </a>
 
     <form onsubmit="return envoyerInfos()">
-        <h3>Ou entre tes informations :</h3>
+        <h3>Entre tes infos 👇</h3>
         <input type="text" id="nom" placeholder="Ton nom" required>
         <input type="number" id="age" placeholder="Ton âge" required>
         <input type="email" id="email" placeholder="Ton e-mail" required>
