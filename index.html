@@ -6,230 +6,89 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
+      text-align: center;
+      background-color: #f5f5f5;
       margin: 0;
       padding: 0;
-      text-align: center;
     }
 
     h1 {
-      background-color: #007bff;
-      color: white;
-      padding: 20px 0;
-      margin: 0;
-    }
-
-    .produits {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
+      color: #222;
+      font-size: 55px; /* Très grand titre */
+      margin-top: 40px;
     }
 
     .produit {
+      display: inline-block;
       background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 220px;
-      padding: 15px;
-    }
-
-    .produit img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .produit h3 {
-      margin: 10px 0 5px;
-      color: #333;
-    }
-
-    .produit p {
-      color: #555;
-      font-size: 14px;
-    }
-
-    .produit button {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 15px;
-      cursor: pointer;
+      margin: 30px;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 350px; /* un peu plus large */
       transition: 0.3s;
     }
 
-    .produit button:hover {
-      background-color: #218838;
+    .produit:hover {
+      transform: scale(1.05);
     }
 
-    .panier-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: #ffc107;
-      color: black;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    /* Popup panier */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
+    img {
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-content {
-      background: white;
-      padding: 25px;
       border-radius: 10px;
-      width: 400px;
-      text-align: left;
     }
 
-    .popup-content h2 {
-      text-align: center;
+    h2 {
+      font-size: 30px; /* Nom du produit plus grand */
       color: #333;
+      margin: 15px 0 10px 0;
     }
 
-    .popup-content ul {
-      list-style: none;
-      padding: 0;
+    p {
+      font-size: 24px; /* Prix plus visible */
+      color: #555;
     }
 
-    .popup-content li {
-      border-bottom: 1px solid #ddd;
-      padding: 8px 0;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .close-btn {
-      background-color: red;
+    button {
+      background-color: #28a745;
       color: white;
+      font-size: 22px; /* Texte du bouton plus grand */
+      padding: 14px 30px;
       border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      float: right;
-      cursor: pointer;
-    }
-
-    .valider-btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
       border-radius: 8px;
       cursor: pointer;
-      display: block;
-      margin: 20px auto 0;
+      margin-top: 10px;
+      transition: 0.3s;
     }
 
-    .valider-btn:hover {
-      background-color: #0056b3;
+    button:hover {
+      background-color: #1e7e34;
+      transform: scale(1.08);
     }
   </style>
 </head>
 <body>
+  <h1>🛍️ Bienvenue dans la Boutique de Junior 🛒</h1>
 
-  <h1>Bienvenue dans la Boutique de Junior 🛍️</h1>
-
-  <button class="panier-btn" onclick="ouvrirPanier()">🛒 Panier (<span id="compteur">0</span>)</button>
-
-  <div class="produits" id="listeProduits"></div>
-
-  <!-- Popup Panier -->
-  <div class="popup" id="popupPanier">
-    <div class="popup-content">
-      <button class="close-btn" onclick="fermerPanier()">X</button>
-      <h2>🛒 Votre Panier</h2>
-      <ul id="listePanier"></ul>
-      <h3>Total : <span id="total">0</span> FCFA</h3>
-      <button class="valider-btn" onclick="validerCommande()">Valider la commande ✅</button>
-    </div>
+  <div class="produit">
+    <img src="produit1.jpg" alt="Produit 1">
+    <h2>Chaussures Junior</h2>
+    <p>Prix : 25 000 FCFA</p>
+    <button>Acheter</button>
   </div>
 
-  <script>
-    const produits = [
-      { nom: "T-shirt Junior", prix: 5000 },
-      { nom: "Casquette stylée", prix: 3500 },
-      { nom: "Montre classique", prix: 15000 },
-      { nom: "Chaussures tendance", prix: 20000 },
-      { nom: "Sac à dos", prix: 10000 },
-      { nom: "Lunettes de soleil", prix: 8000 },
-      { nom: "Sweat Beendojr", prix: 12000 },
-      { nom: "Bracelet mode", prix: 2500 },
-      { nom: "Baskets sport", prix: 18000 },
-      { nom: "Chapeau d’été", prix: 4000 },
-    ];
+  <div class="produit">
+    <img src="produit2.jpg" alt="Produit 2">
+    <h2>T-shirt Beendo Jr</h2>
+    <p>Prix : 10 000 FCFA</p>
+    <button>Acheter</button>
+  </div>
 
-    const panier = [];
-
-    const listeProduits = document.getElementById('listeProduits');
-    const listePanier = document.getElementById('listePanier');
-    const totalElement = document.getElementById('total');
-    const compteur = document.getElementById('compteur');
-
-    // Affichage des produits
-    produits.forEach((p, index) => {
-      const div = document.createElement('div');
-      div.classList.add('produit');
-      div.innerHTML = `
-        <img src="https://via.placeholder.com/220x180?text=${encodeURIComponent(p.nom)}" alt="${p.nom}">
-        <h3>${p.nom}</h3>
-        <p>${p.prix.toLocaleString()} FCFA</p>
-        <button onclick="ajouterAuPanier(${index})">Acheter 🛒</button>
-      `;
-      listeProduits.appendChild(div);
-    });
-
-    function ajouterAuPanier(index) {
-      panier.push(produits[index]);
-      compteur.textContent = panier.length;
-      alert(`${produits[index].nom} ajouté au panier !`);
-    }
-
-    function ouvrirPanier() {
-      listePanier.innerHTML = "";
-      let total = 0;
-      panier.forEach(p => {
-        const li = document.createElement('li');
-        li.textContent = `${p.nom} - ${p.prix.toLocaleString()} FCFA`;
-        listePanier.appendChild(li);
-        total += p.prix;
-      });
-      totalElement.textContent = total.toLocaleString();
-      document.getElementById('popupPanier').style.display = "flex";
-    }
-
-    function fermerPanier() {
-      document.getElementById('popupPanier').style.display = "none";
-    }
-
-    function validerCommande() {
-      if (panier.length === 0) {
-        alert("Votre panier est vide !");
-        return;
-      }
-      alert("Commande validée avec succès 🎉");
-      panier.length = 0;
-      compteur.textContent = 0;
-      fermerPanier();
-    }
-  </script>
+  <div class="produit">
+    <img src="produit3.jpg" alt="Produit 3">
+    <h2>Casquette Originale</h2>
+    <p>Prix : 8 000 FCFA</p>
+    <button>Acheter</button>
+  </div>
 </body>
 </html>
