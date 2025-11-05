@@ -1,119 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Site de Junior 😎</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
       margin: 0;
       padding: 0;
-      background: url('ton-image-de-fond.jpg') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: url('IMG_1864.jpeg') no-repeat center center fixed;
+      background-size: cover;
     }
 
     h1 {
-      font-size: 2.5em;
-      font-weight: bold;
-      margin: 20px 10px;
-      line-height: 1.3em;
+      margin-top: 100px;
+      font-size: 64px;
+      text-shadow: 3px 3px 8px black;
     }
 
     p {
-      font-size: 1.2em;
-      margin: 10px 0;
+      margin-top: -10px;
+      font-size: 34px;
+      text-shadow: 2px 2px 6px black;
     }
 
-    .btn {
+    button {
       background-color: #007bff;
       color: white;
-      padding: 15px 25px;
+      font-size: 30px;
+      padding: 25px 50px;
       border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1.2em;
-      margin: 15px 0;
-    }
-
-    .btn:hover {
-      background-color: #0056b3;
-    }
-
-    .form-section {
-      background: rgba(0, 0, 0, 0.6);
       border-radius: 15px;
-      padding: 20px;
-      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    form {
+      background-color: rgba(0, 0, 0, 0.85);
+      display: inline-block;
+      margin-top: 40px;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
       width: 90%;
-      max-width: 400px;
+      max-width: 600px;
+    }
+
+    h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
     input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
+      display: block;
+      width: 95%;
+      padding: 24px;
+      margin: 15px auto;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      text-align: center;
+      border-radius: 10px;
+      font-size: 26px;
     }
 
-    #aiButton {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #007bff;
+    .submit-btn {
+      background-color: #28a745;
       color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 1.8em;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      margin-top: 20px;
+      font-size: 28px;
+      padding: 24px 40px;
     }
 
+    .submit-btn:hover {
+      background-color: #1e7e34;
+    }
+
+    /* Panier flottant */
+    #cart-icon {
+      position: fixed;
+      bottom: 35px;
+      right: 35px;
+      background-color: #ffcc00;
+      color: black;
+      font-size: 46px;
+      padding: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+
+    #cart-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* Mobile */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2em;
-      }
-      .btn {
-        font-size: 1.1em;
-        padding: 12px 20px;
-      }
-      input {
-        font-size: 1em;
-      }
+      h1 { font-size: 72px; }
+      p { font-size: 36px; }
+      button { font-size: 32px; padding: 26px 55px; }
+      form { width: 92%; padding: 55px; }
+      input { font-size: 28px; padding: 26px; }
+      .submit-btn { font-size: 30px; }
+      #cart-icon { font-size: 48px; padding: 30px; bottom: 35px; right: 35px; }
     }
   </style>
 </head>
 <body>
+  <h1>Bienvenue sur le site de Junior 😎</h1>
+  <p>Clique sur un bouton pour continuer :</p>
 
-  <div class="container">
-    <h1>Bienvenue sur le site de Junior 😎</h1>
-    <p>Clique sur le bouton pour visiter mon site :</p>
-    <button class="btn" onclick="window.location.href='https://junior360zz.github.io/boutique'">
-      Aller sur mon site 🌍
-    </button>
-  </div>
+  <a href="https://heylink.me/beendojr/" target="_blank">
+    <button>Aller sur mon site 🌍</button>
+  </a>
+  <a href="boutique.html">
+    <button>🛍️ Boutique</button>
+  </a>
 
-  <div class="form-section">
-    <h2>Entre tes infos 👇</h2>
-    <input type="text" placeholder="Ton nom" />
-    <input type="number" placeholder="Ton âge" />
-  </div>
+  <form onsubmit="return envoyerInfos()">
+    <h3>Entre tes infos 👇</h3>
+    <input type="text" id="nom" placeholder="Ton nom" required>
+    <input type="number" id="age" placeholder="Ton âge" required>
+    <input type="email" id="email" placeholder="Ton e-mail" required>
+    <input type="password" id="motDePasse" placeholder="Ton mot de passe" required>
+    <button type="submit" class="submit-btn">Envoyer ✉️</button>
+  </form>
 
-  <button id="aiButton">🤖</button>
+  <div id="cart-icon" onclick="ouvrirPanier()">🛒</div>
 
+  <script>
+    function envoyerInfos() {
+      const nom = document.getElementById('nom').value;
+      const age = document.getElementById('age').value;
+      const email = document.getElementById('email').value;
+      const motDePasse = document.getElementById('motDePasse').value;
+
+      if (motDePasse !== "junior123") {
+        alert("Mot de passe incorrect ❌");
+        return false;
+      }
+
+      alert(`Merci ${nom} (${age} ans) ! Ton e-mail (${email}) est bien enregistré 🎉`);
+      window.location.href = "https://heylink.me/beendojr/";
+      return false;
+    }
+
+    function ouvrirPanier() {
+      alert("Ton panier est vide pour le moment 🛒");
+    }
+  </script>
 </body>
 </html>
